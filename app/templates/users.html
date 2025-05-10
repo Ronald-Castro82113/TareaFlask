@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Lista de Usuarios</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Activo</th>
+                <th>Fecha de Registro</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for usuario in usuarios %}
+                <tr>
+                    <td>{{ usuario.id }}</td>
+                    <td>{{ usuario.nombre }}</td>
+                    <td>{{ usuario.email }}</td>
+                    <td>{{ 'Sí' if usuario.activo else 'No' }}</td>
+                    <td>{{ usuario.fecha_registro }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <form action="/users" method="POST"  enctype="multipart/form-data">
+        <label for="">Nombre</label>
+        <input type="text" name="nombre">
+
+        <label for="">Email</label>
+        <input type="email" name="correo">
+
+        <button type="submit">Enviar</button>
+
+    </form>
+</body>
+</html>
